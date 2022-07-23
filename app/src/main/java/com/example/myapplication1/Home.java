@@ -1,14 +1,52 @@
 package com.example.myapplication1;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Camera;
+import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.SurfaceView;
+import android.view.View;
 
 public class Home extends AppCompatActivity {
+
+    public void takePicture(View view) {
+        if (ContextCompat.checkSelfPermission(Home.this, Manifest.permission.CAMERA) !=
+        PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(Home.this,
+                    new String[]{
+                            Manifest.permission.CAMERA
+                    }, 100);
+        }
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, 100);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100) {
+            Bitmap image_capture = (Bitmap) data.getExtras().get("data");
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+    }
+
+    public void importPicture(View view) {
     }
 }
