@@ -13,6 +13,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Camera;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.SurfaceView;
@@ -33,10 +34,17 @@ public class Home extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100) {
-            Bitmap image_capture = (Bitmap) data.getExtras().get("data");
+            if (data != null){
+                Bitmap image_capture = (Bitmap) data.getExtras().get("data");
+            }
+        }
+        if (requestCode == 3){
+            if (data != null) {
+                Uri imageSelect = data.getData();
+            }
         }
     }
 
@@ -48,5 +56,7 @@ public class Home extends AppCompatActivity {
     }
 
     public void importPicture(View view) {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, 3);
     }
 }
