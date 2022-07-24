@@ -26,6 +26,7 @@
         android:layout_marginBottom="10dp"
         android:backgroundTint="#0F0F20"
         android:text="Se Deconnecter"
+        android:onClick="disconnected"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

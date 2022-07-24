@@ -170,6 +170,7 @@
         android:layout_marginTop="90dp"
         android:backgroundTint="#0F0F20"
         android:text="Retour"
+        android:onClick="backToLogin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textInputLayout2" />
 
@@ -181,6 +182,7 @@
         android:layout_marginEnd="30dp"
         android:backgroundTint="#0F0F20"
         android:text="Confirmer"
+        android:onClick="createProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textInputLayout2" />
 

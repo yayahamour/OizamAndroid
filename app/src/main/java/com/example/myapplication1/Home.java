@@ -1,25 +1,23 @@
 package com.example.myapplication1;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import android.Manifest;
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.Camera;
-import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.SurfaceView;
 import android.view.View;
 
 public class Home extends AppCompatActivity {
+
+
+    public void prediction(View view){
+
+    }
 
     public void takePicture(View view) {
         if (ContextCompat.checkSelfPermission(Home.this, Manifest.permission.CAMERA) !=
@@ -48,7 +46,6 @@ public class Home extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,5 +55,11 @@ public class Home extends AppCompatActivity {
     public void importPicture(View view) {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, 3);
+    }
+
+    public void disconnected(View view) {
+        Intent main = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(main);
+        finish();
     }
 }
