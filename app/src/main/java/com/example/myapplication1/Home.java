@@ -11,6 +11,7 @@ import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import com.example.myapplication1.ml.ModelFr;
@@ -22,11 +23,12 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 public class Home extends AppCompatActivity {
-    int imageSize = 224;
+    int imageSize = 299;
 
 
     public void prediction(Bitmap image_capture){
         RadioButton rb;
+        int maxPos = 0;
         try {
             rb = (RadioButton) findViewById(R.id.french_model);
 
@@ -54,7 +56,6 @@ public class Home extends AppCompatActivity {
                 ModelFr.Outputs outputs = model.process(inputFeature0);
                 TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
                 float [] confidences = outputFeature0.getFloatArray();
-                int maxPos = 0;
                 float maxConfidence = 0;
                 for (int i = 0; i < confidences.length; i++) {
                     if (confidences[i] > maxConfidence){
@@ -69,7 +70,6 @@ public class Home extends AppCompatActivity {
                 ModelUs.Outputs outputs = model.process(inputFeature0);
                 TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
                 float [] confidences = outputFeature0.getFloatArray();
-                int maxPos = 0;
                 float maxConfidence = 0;
                 for (int i = 0; i < confidences.length; i++) {
                     if (confidences[i] > maxConfidence){
@@ -79,6 +79,7 @@ public class Home extends AppCompatActivity {
                 }
                 model.close();
             }
+            Log.i("MyActivity", "prediction :" + maxPos);
 
         } catch (IOException e) {
             // TODO Handle the exception
