@@ -124,7 +124,7 @@
         <RadioButton
             android:id="@+id/french_model"
             style="@style/Widget.AppCompat.CompoundButton.RadioButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="Français"
@@ -134,7 +134,7 @@
         <RadioButton
             android:id="@+id/US_model"
             style="@style/Widget.AppCompat.CompoundButton.RadioButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Américain"
             android:textColor="#F8F8F8" />
