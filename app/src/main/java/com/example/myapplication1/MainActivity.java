@@ -1,8 +1,6 @@
 package com.example.myapplication1;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,8 +16,9 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
-    public static int id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            id = response.getInt("user_connected");
+                            ((Oizam) getApplication()).setId(response.getInt("user_connected"));
+
                             Intent home = new Intent(getApplicationContext(), Home.class);
                             startActivity(home);
                             finish();

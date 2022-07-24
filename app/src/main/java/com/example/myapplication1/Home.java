@@ -80,7 +80,7 @@ public class Home extends AppCompatActivity {
                 model.close();
             }
             Log.i("MyActivity", "prediction :" + maxPos);
-
+            ((Oizam) getApplication()).getId();
         } catch (IOException e) {
             // TODO Handle the exception
         }
