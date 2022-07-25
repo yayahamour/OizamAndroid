@@ -80,7 +80,10 @@ public class Home extends AppCompatActivity {
                 model.close();
             }
             Log.i("MyActivity", "prediction :" + maxPos);
-            ((Oizam) getApplication()).getId();
+            ((Oizam) getApplication()).setBirdId(maxPos);
+            Intent activity_bird = new Intent(getApplicationContext(), BirdActivity.class);
+            startActivity(activity_bird);
+            finish();
         } catch (IOException e) {
             // TODO Handle the exception
         }
@@ -123,7 +126,6 @@ public class Home extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
         }
     }
@@ -142,6 +144,12 @@ public class Home extends AppCompatActivity {
     public void disconnected(View view) {
         Intent main = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(main);
+        finish();
+    }
+
+    public void goToDex(View view) {
+        Intent dexActivity = new Intent(getApplicationContext(), activity_dex.class);
+        startActivity(dexActivity);
         finish();
     }
 }
