@@ -7,7 +7,6 @@ public class Oizam extends Application {
 
     private int id;
     private int birdId;
-
     public int getId() {
         Log.e("MyActivity", "id :" + id);
         return id;
